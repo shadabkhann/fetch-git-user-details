@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Github Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/1397516fa1.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" id="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+    <div class="profile-card">
+        <div class="card-header">
+            <div class="pic">
+                <img id="img" src="" alt="">
+            </div>
+            <div class="text" id="text " name="name" alt="">
+                
+            </div>
+
+            <div class="desc">Python Developer</div>
+            <div class="sm">
+                <a href="#" class="fab fa-facebook-f"></a>
+                <a href="#" class="fab fa-twitter"></a>
+                <a href="#" class="fab fa-github"></a>
+                <a href="#" class="fab fa-youtube"></a>
+            </div>
+            <a href="#" class="contact-btn">Contact Me</a>
+        </div>
+        <div class="cardy-footer">
+            <div class="number">
+                <div class="item">
+                    <span>120</span>
+                    Following
+                </div>
+                <div class="item">
+                    <span>120k</span>
+                    Followers
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var my_id = document.getElementById("user_id")
+    my_id = addEventListener('submit', function (e) {
+        e.preventDefault()
+        var search = document.getElementById("search").value
+        var realname = search.split(' ').join('')
+        fetch('https://api.github.com/users/' + realname)
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+                document.getElementById("img").src = data.avatar_url
+                document.getElementById("name").alt = data.name
+            })
+    })
+</script>
+
+</html>
